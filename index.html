@@ -8,16 +8,18 @@
   <title>SheHacks LT — Learn, build, belong</title>
   <style>
     :root {
-      --ink: #101317;
-      --paper: #f4f1ea;
-      --paper-deep: #e7e1d6;
-      --muted: #696a68;
-      --line: rgba(16, 19, 23, .14);
-      --lime: #c7f36b;
-      --coral: #ff775f;
-      --blue: #8795ff;
-      --white: #fffdf8;
-      --shadow: 0 18px 60px rgba(16, 19, 23, .12);
+      --ink: #321733;
+      --paper: #fff1eb;
+      --paper-deep: #f7d3d2;
+      --muted: #7b5c6d;
+      --line: rgba(80, 35, 76, .16);
+      --lime: #ffd36d;
+      --coral: #ef7f8d;
+      --blue: #a879d1;
+      --pink: #d855a6;
+      --aqua: #79c8c2;
+      --white: #fffaf7;
+      --shadow: 0 18px 60px rgba(95, 36, 74, .16);
       --radius: 24px;
     }
 
@@ -59,8 +61,8 @@
 
     .hero { padding: 88px 0 92px; position: relative; overflow: hidden; }
     .hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; filter: blur(1px); pointer-events: none; }
-    .hero::before { width: 390px; height: 390px; right: -110px; top: -120px; background: rgba(199, 243, 107, .42); }
-    .hero::after { width: 260px; height: 260px; left: -150px; bottom: -150px; background: rgba(135, 149, 255, .22); }
+    .hero::before { width: 390px; height: 390px; right: -110px; top: -120px; background: rgba(255, 211, 109, .46); }
+    .hero::after { width: 260px; height: 260px; left: -150px; bottom: -150px; background: rgba(168, 121, 209, .28); }
     .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 70px; align-items: center; position: relative; z-index: 1; }
     .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
     .eyebrow::before { content: ""; width: 22px; height: 3px; border-radius: 99px; background: var(--coral); }
@@ -73,7 +75,7 @@
     .button.primary { background: var(--ink); color: var(--white); }
     .button.secondary { background: transparent; }
 
-    .hero-card { min-height: 415px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--ink); border-radius: 32px; background: var(--blue); box-shadow: var(--shadow); transform: rotate(2deg); }
+    .hero-card { min-height: 415px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--ink); border-radius: 32px; background: linear-gradient(135deg, var(--coral) 0%, var(--pink) 52%, var(--blue) 100%); box-shadow: var(--shadow); transform: rotate(2deg); }
     .hero-card-top { display: flex; justify-content: space-between; align-items: flex-start; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
     .spark { width: 64px; height: 64px; display: grid; place-items: center; border-radius: 50%; background: var(--lime); font-size: 31px; }
     .hero-card h2 { max-width: 340px; margin: 0; font-size: clamp(35px, 4vw, 58px); line-height: .92; letter-spacing: -.075em; }
@@ -110,13 +112,17 @@
     .event-date span { font-size: 10px; font-weight: 800; text-transform: uppercase; }
     .event-item h3 { margin-bottom: 4px; font-size: 18px; letter-spacing: -.04em; }
     .event-item p { margin: 0; color: var(--muted); font-size: 13px; }
-    .event-arrow { width: 35px; height: 35px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; }
+    .event-item p a { color: var(--ink); font-weight: 800; text-decoration: none; }
+    .event-actions { display: flex; align-items: center; gap: 8px; }
+    .event-register { display: inline-flex; align-items: center; min-height: 33px; padding: 0 11px; border-radius: 999px; background: var(--ink); color: var(--white); font-size: 11px; font-weight: 800; text-decoration: none; white-space: nowrap; }
+    .event-register:hover, .event-register:focus-visible { background: var(--pink); }
+    .event-arrow { width: 35px; height: 35px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; text-decoration: none; }
     .empty-state { padding: 30px; color: var(--muted); text-align: center; }
     .empty-state strong { display: block; margin-bottom: 5px; color: var(--ink); }
 
     .journal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .post { min-height: 300px; padding: 24px; display: flex; flex-direction: column; border: 1px solid var(--ink); border-radius: var(--radius); background: var(--white); }
-    .post:nth-child(2) { background: var(--coral); }
+    .post:nth-child(2) { background: #f4a7b8; }
     .post:nth-child(3) { background: var(--lime); }
     .post-meta { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 55px; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
     .post h3 { margin-bottom: 10px; font-size: 28px; line-height: 1; letter-spacing: -.065em; }
@@ -161,6 +167,7 @@
     @media (max-width: 470px) {
       h1 { font-size: 55px; }
       .event-item { grid-template-columns: 60px 1fr; gap: 13px; }
+      .event-actions { grid-column: 2; }
       .event-arrow { display: none; }
       .footer-row { display: block; }
       .footer-row span { display: block; margin-top: 9px; }
@@ -175,7 +182,7 @@
         <a href="#events">Events</a>
         <a href="#journal">Journal</a>
         <a href="#about">About</a>
-        <a class="nav-cta" href="#events">Find your next thing <span aria-hidden="true">↗</span></a>
+        <a class="nav-cta" href="#events">Find an event <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
   </header>
@@ -184,18 +191,18 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="shell hero-grid">
         <div>
-          <div class="eyebrow">Community for curious builders</div>
-          <h1 id="hero-title">Learn. Build. Belong.</h1>
-          <p class="hero-copy">SheHacks LT is a welcoming corner for women and allies who want to grow their skills, make useful things, and meet people who get it.</p>
+          <div class="eyebrow">Hack · make · share</div>
+          <h1 id="hero-title">Hack it. Make it yours.</h1>
+          <p class="hero-copy">SheHacks LT is a home base for security experiments, hardware tinkering, privacy tools, and the side projects that start with a late-night “what if?”</p>
           <div class="actions">
             <a class="button primary" href="#events">See what's next <span aria-hidden="true">↓</span></a>
             <a class="button secondary" href="#journal">Read the journal <span aria-hidden="true">↗</span></a>
           </div>
         </div>
         <div class="hero-card" aria-label="A note from SheHacks LT">
-          <div class="hero-card-top"><span>Make room for ideas</span><span class="spark" aria-hidden="true">✦</span></div>
-          <h2>Small steps. Big energy.</h2>
-          <div class="hero-card-footer"><p>Workshops, conversations, and a little more courage to ship the thing.</p><span class="card-number">01</span></div>
+          <div class="hero-card-top"><span>Curiosity is a feature</span><span class="spark" aria-hidden="true">✦</span></div>
+          <h2>Break things. Learn why.</h2>
+          <div class="hero-card-footer"><p>CTFs, home labs, hardware, and the projects that never fit in a sprint.</p><span class="card-number">01</span></div>
         </div>
       </div>
     </section>
@@ -203,8 +210,8 @@
     <section id="events" aria-labelledby="events-title">
       <div class="shell">
         <div class="section-heading">
-          <div><div class="eyebrow">Up next</div><h2 class="section-title" id="events-title">Make time for something good.</h2></div>
-          <p class="section-intro">A simple calendar for meetups, workshops, and moments worth putting in your diary.</p>
+          <div><div class="eyebrow">Up next</div><h2 class="section-title" id="events-title">Put the good stuff on your calendar.</h2></div>
+          <p class="section-intro">Lithuanian security meetups, local tech events, and conferences worth the trip.</p>
         </div>
         <div class="events-layout">
           <div class="calendar" aria-label="Event calendar">
@@ -220,8 +227,8 @@
     <section id="journal" aria-labelledby="journal-title">
       <div class="shell">
         <div class="section-heading">
-          <div><div class="eyebrow">The journal</div><h2 class="section-title" id="journal-title">Notes from the messy middle.</h2></div>
-          <p class="section-intro">Short reflections, practical lessons, and tiny reminders that progress counts.</p>
+          <div><div class="eyebrow">The journal</div><h2 class="section-title" id="journal-title">Notes from the lab bench.</h2></div>
+          <p class="section-intro">Write-ups, experiments, tools, and the lessons behind the failures.</p>
         </div>
         <div class="journal-grid" id="journal-grid"></div>
       </div>
@@ -229,11 +236,11 @@
 
     <section id="about" aria-labelledby="about-title">
       <div class="shell about">
-        <div class="about-copy"><div class="eyebrow">Why we are here</div><h2 class="section-title" id="about-title">There is more room at the table.</h2><p>SheHacks LT is built around the idea that technology gets better when more voices get to shape it.</p><p>This space is ready for your real story, your community links, and your next event. Start small, keep it human, and add the details that make it yours.</p></div>
+        <div class="about-copy"><div class="eyebrow">The point of the project</div><h2 class="section-title" id="about-title">Build weird. Learn loudly.</h2><p>SheHacks LT is for hacking, home projects, and the joy of figuring out how things work.</p><p>Use this space for your security notes, hardware experiments, privacy ideas, CTF lessons, and the links you want to remember.</p></div>
         <div class="principles" aria-label="Community principles">
-          <div class="principle"><strong>01</strong><div><h3>Come as you are</h3><p>No perfect portfolio or polished pitch required.</p></div></div>
-          <div class="principle"><strong>02</strong><div><h3>Make it useful</h3><p>Ideas become more interesting when they help someone.</p></div></div>
-          <div class="principle"><strong>03</strong><div><h3>Leave the door open</h3><p>Share what you learn so the next person starts further ahead.</p></div></div>
+          <div class="principle"><strong>01</strong><div><h3>Test with permission</h3><p>Curiosity is powerful when the scope is clear and respectful.</p></div></div>
+          <div class="principle"><strong>02</strong><div><h3>Write the weird part down</h3><p>The useful detail is usually the thing that surprised you.</p></div></div>
+          <div class="principle"><strong>03</strong><div><h3>Keep it playful</h3><p>Home projects do not need a roadmap to be worth doing.</p></div></div>
         </div>
       </div>
     </section>
@@ -246,23 +253,51 @@
   </div>
 
   <script>
-    // Add confirmed events here. Dates use YYYY-MM-DD and are rendered in the visitor's locale.
-    const events = [];
+    // Confirmed events. Dates use YYYY-MM-DD; multi-day events use endDate.
+    const events = [
+      { date: '2026-11-10', title: "Security Day '26", time: '08:30–18:00', location: 'LITEXPO · Vilnius', url: 'https://www.smn.lt/securityday/', registerLinks: [{ label: 'Register', url: 'https://www.smn.lt/registracija-2026/' }] },
+      { date: '2026-11-17', endDate: '2026-11-18', title: 'Offensive360 Vilnius', time: '18:00', location: 'Artis Centrum Hotels · Vilnius', url: 'https://offensive360.com/vilnius/', registerLinks: [{ label: 'RSVP Tue', url: 'https://luma.com/xf4h5r61' }, { label: 'RSVP Wed', url: 'https://luma.com/ougpd8cd' }] },
+      { date: '2026-12-27', endDate: '2026-12-30', title: '40C3 · Chaos Communication Congress', time: 'All day', location: 'Hamburg · Germany', url: 'https://events.ccc.de/2026/', registerLinks: [{ label: 'Tickets', url: 'https://tickets.events.ccc.de/40c3/' }] },
+      { date: '2027-02-19', endDate: '2027-02-20', title: 'Disobey 2027', time: 'All day', location: 'Kaapelitehdas · Helsinki', url: 'https://disobey.fi/2027/', registerLinks: [{ label: 'Tickets', url: 'https://disobey.fi/2027/tickets' }] }
+    ];
 
     const posts = [
-      { date: 'Coming soon', tag: 'Welcome', title: 'A new home for curious builders', excerpt: 'The first note from SheHacks LT: why this space exists and what we hope to make together.', body: ['This is the beginning of the SheHacks LT journal — a small place for useful ideas, honest lessons, and the people behind the work.', 'Replace this sample post with your own story, or add another post to the posts array in index.html.'] },
-      { date: 'Coming soon', tag: 'Practice', title: 'Start before you feel ready', excerpt: 'A gentle reminder that the first version only needs to be real enough to learn from.', body: ['A first version is not a verdict. It is a question you can put in front of the world and improve with better information.', 'Keep the scope kind, make one useful thing, and let the next version earn its way into existence.'] },
-      { date: 'Coming soon', tag: 'Community', title: 'Leave the door open', excerpt: 'The best communities make it easier for the next person to take their first step.', body: ['Write down what surprised you. Share the resource you wished you had. Invite someone into the conversation.', 'Momentum is more generous when it is shared.'] }
+      { date: 'Draft note', tag: 'Home lab', title: 'A tiny lab is still a lab', excerpt: 'The best projects often start with one spare machine, one weird question, and a weekend.', body: ['A home lab does not need a rack, a budget, or a grand plan. Start with one device you can afford to break and a small experiment you can explain.', 'Document the setup, keep the rollback path close, and write down the first thing that surprised you.'] },
+      { date: 'Draft note', tag: 'Security', title: 'Read the packet twice', excerpt: 'A small reminder for debugging, threat modelling, and every log line that looks “probably fine”.', body: ['The interesting detail is often hiding in the part you skimmed: a header, a timestamp, a default, or a mismatch between what a tool says and what the system did.', 'Slow down just enough to make the invisible state visible.'] },
+      { date: 'Draft note', tag: 'Side quest', title: 'The joy of a suspicious little gadget', excerpt: 'A home project can be useful, impractical, and still completely worth doing.', body: ['Make the sensor. Rebuild the keyboard. Put a tiny screen on the thing that did not need one.', 'Side projects are where curiosity gets room to move. Replace this draft note with your own write-up when you are ready.'] }
     ];
 
     const today = new Date();
-    let visibleMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+    const upcomingStart = events.map(event => parseEventDate(event.date)).filter(date => date >= today).sort((a, b) => a - b)[0];
+    let visibleMonth = upcomingStart ? new Date(upcomingStart.getFullYear(), upcomingStart.getMonth(), 1) : new Date(today.getFullYear(), today.getMonth(), 1);
     const monthLabel = document.getElementById('month-label');
     const calendarGrid = document.getElementById('calendar-grid');
     const eventList = document.getElementById('event-list');
 
     function formatMonth(date) { return new Intl.DateTimeFormat(undefined, { month: 'long', year: 'numeric' }).format(date); }
     function parseEventDate(date) { const [year, month, day] = date.split('-').map(Number); return new Date(year, month - 1, day); }
+    function eventEnd(event) { return parseEventDate(event.endDate || event.date); }
+    function eventDateKeys(event) {
+      const keys = [];
+      for (let current = parseEventDate(event.date); current <= eventEnd(event); current = new Date(current.getFullYear(), current.getMonth(), current.getDate() + 1)) {
+        keys.push(`${current.getFullYear()}-${String(current.getMonth() + 1).padStart(2, '0')}-${String(current.getDate()).padStart(2, '0')}`);
+      }
+      return keys;
+    }
+    function eventOverlapsMonth(event) {
+      const monthStart = new Date(visibleMonth.getFullYear(), visibleMonth.getMonth(), 1);
+      const monthEnd = new Date(visibleMonth.getFullYear(), visibleMonth.getMonth() + 1, 0);
+      return parseEventDate(event.date) <= monthEnd && eventEnd(event) >= monthStart;
+    }
+    function formatEventRange(event) {
+      const start = parseEventDate(event.date);
+      const end = eventEnd(event);
+      const startMonth = start.toLocaleDateString(undefined, { month: 'short' });
+      const endMonth = end.toLocaleDateString(undefined, { month: 'short' });
+      if (start.getTime() === end.getTime()) return `${start.getDate()} ${startMonth}`;
+      if (start.getMonth() === end.getMonth()) return `${start.getDate()}–${end.getDate()} ${startMonth}`;
+      return `${start.getDate()} ${startMonth}–${end.getDate()} ${endMonth}`;
+    }
     function renderCalendar() {
       monthLabel.textContent = formatMonth(visibleMonth);
       calendarGrid.innerHTML = '';
@@ -270,7 +305,7 @@
       const daysInMonth = new Date(visibleMonth.getFullYear(), visibleMonth.getMonth() + 1, 0).getDate();
       const previousMonthDays = new Date(visibleMonth.getFullYear(), visibleMonth.getMonth(), 0).getDate();
       const mondayIndex = (firstDay.getDay() + 6) % 7;
-      const eventDates = new Set(events.map(event => event.date));
+      const eventDates = new Set(events.flatMap(eventDateKeys));
       for (let i = 0; i < 42; i += 1) {
         const offset = i - mondayIndex + 1;
         const cell = document.createElement('div');
@@ -289,9 +324,9 @@
       renderEventList();
     }
     function renderEventList() {
-      const currentEvents = events.filter(event => { const date = parseEventDate(event.date); return date.getFullYear() === visibleMonth.getFullYear() && date.getMonth() === visibleMonth.getMonth(); });
-      if (!currentEvents.length) { eventList.innerHTML = '<div class="empty-state"><strong>No events posted yet.</strong><span>Confirmed dates will appear here. Add them to the events list in index.html.</span></div>'; return; }
-      eventList.innerHTML = currentEvents.map(event => { const date = parseEventDate(event.date); return `<article class="event-item"><div class="event-date"><strong>${date.getDate()}</strong><span>${date.toLocaleDateString(undefined, { month: 'short' })}</span></div><div><h3>${event.title}</h3><p>${event.time} · ${event.location}</p></div><span class="event-arrow" aria-hidden="true">↗</span></article>`; }).join('');
+      const currentEvents = events.filter(eventOverlapsMonth);
+      if (!currentEvents.length) { eventList.innerHTML = '<div class="empty-state"><strong>No events this month.</strong><span>Use the arrows to browse the calendar.</span></div>'; return; }
+      eventList.innerHTML = currentEvents.map(event => { const date = parseEventDate(event.date); const registrationLinks = event.registerLinks.map(link => `<a class="event-register" href="${link.url}" target="_blank" rel="noreferrer">${link.label}</a>`).join(''); return `<article class="event-item"><div class="event-date"><strong>${date.getDate()}</strong><span>${date.toLocaleDateString(undefined, { month: 'short' })}</span></div><div><h3>${event.title}</h3><p>${formatEventRange(event)} · ${event.time} · ${event.location}</p></div><div class="event-actions">${registrationLinks}<a class="event-arrow" href="${event.url}" target="_blank" rel="noreferrer" aria-label="Open ${event.title} website">↗</a></div></article>`; }).join('');
     }
     document.getElementById('previous-month').addEventListener('click', () => { visibleMonth = new Date(visibleMonth.getFullYear(), visibleMonth.getMonth() - 1, 1); renderCalendar(); });
     document.getElementById('next-month').addEventListener('click', () => { visibleMonth = new Date(visibleMonth.getFullYear(), visibleMonth.getMonth() + 1, 1); renderCalendar(); });
